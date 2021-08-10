@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>machin.dev</title>
+    <title>machin·dev</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="./css/fontawesome/css/all.css"/>
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <link rel="stylesheet" type="text/css" href="./css/text.css"/>
+    <script src="./js/contact.js"></script>
 </head>
 
 <body>
@@ -18,8 +19,17 @@
             <img class="p-2" src="./images/logo.svg" width="200px">
         </div>
         <div class="column is-flex is-justify-content-flex-end is-centered-on-mobile buttons">
-            <button class="button">Edicate Client v0.1.0</button>
-            <button class="button">Button</button>
+            <button class="button"><a href="https://github.com/mejszin/edicate">Edicate Client v0.1.0</a></button>
+            <button class="button">
+                <a href="https://github.com/mejszin/edicate">
+                    <span class="icon-text">
+                        <span class="icon">
+                            <i class="fab fa-github"></i>
+                        </span>
+                        <span>Source code</span>
+                    </span>
+                </a>
+            </button>
             <button class="button">Button</button>
             <button class="button">Button</button>
         </div>
@@ -40,7 +50,7 @@
                     </span>
                 </div>
                 <div class="control">
-                    <a class="button is-info">
+                    <a id="contact-btn" class="button is-info" onclick="sendEmailData()">
                         Get in touch!
                     </a>
                 </div>

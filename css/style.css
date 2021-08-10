@@ -3,6 +3,10 @@ html {
     padding: 4rem 8rem;
 }
 
+a {
+    color: inherit;
+}
+
 .is-text-centered > * {
     text-align: center;
 }

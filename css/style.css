@@ -31,7 +31,16 @@ img.screenshot {
     border-radius: 8px;
 }
 
+img.drawing {
+    max-width: 50%;
+}
+
 .is-vertically-centered {
     display: flex;
     align-items: center;
+}
+
+.is-horizontally-centered {
+    display: flex;
+    justify-content: center;
 }

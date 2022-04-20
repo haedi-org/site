@@ -5,15 +5,25 @@
     <title>haedi</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/> -->
     <link rel="shortcut icon" type="image/png" href="./images/favicon.png"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/bulma.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/bulma-divider.min.css"/>
     <link rel="stylesheet" type="text/css" href="./css/fontawesome/css/all.css"/>
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <link rel="stylesheet" type="text/css" href="./css/text.css"/>
-    <script defer src="./js/p5.min.js"></script>
-    <script defer src="./js/sparkle.js"></script>
+    <!-- Syntax highlighting -->
+    <link rel="stylesheet" href="./css/felipec.min.css">
+    <script src="./lib/highlight.min.js"></script>
+    <!-- Sketches -->
+    <script defer src="./lib/p5.min.js"></script>
+    <script defer src="./lib/sparkle.js"></script>
+    <!-- Lightbox -->
+    <link href="./lib/lightbox/css/lightbox.css" rel="stylesheet">
 </head>
+
+<!-- Scrolling -->
+<style>html{scroll-behavior:smooth}</style>
 
 <body>
     <div class="columns is-desktop is-centered is-8-desktop is-0-mobile">
@@ -47,7 +57,7 @@
             </button>
         </div>
     </div>
-    <div class="columns is-desktop is-centered is-8 p-6">
+    <div class="columns is-desktop is-centered is-8 pt-6 px-6 pb-4 mb-0">
         <div class="column is-narrow is-centered-on-mobile">
             <!-- Header text -->
             <div class="content is-text-centered pb-4">
@@ -70,48 +80,107 @@
                     </a>
                 </div>
             </div>
-            <!-- Supported brands 
-            <div class="content is-text-centered pt-6">
-                <p class="front-page">Build EDI links faster and with more confidence knowing<br>that any 3rd-party specifications are met.</p>
-            </div>-->
         </div>
     </div>
     <div class="content columns is-centered">
         <div class="column is-three-fifths">
-            <!-- Image -->
-            <img class="screenshot mt-2 mb-6" src="./images/screenshots/failure.png">
-            <!-- Image & Text -->
+            <!-- Divider -->
+            <div class="is-divider mb-2"></div>
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb is-centered is-large m-0" aria-label="breadcrumbs" style="width: 100%">
+                <ul class="m-0">
+                    <li class="my-0"><a href="#validation">Validation</a></li>
+                    <li class="my-0"><a href="#conversion">Conversion</a></li>
+                    <li class="my-0"><a href="#visualization">Visualization</a></li>
+                    <li class="my-0"><a href="#api">API</a></li>
+                </ul>
+            </nav>
+            <!-- Divider -->
+            <div class="is-divider mt-2"></div>
+            <!-- Validation -->
             <div class="columns is-desktop is-vcentered px-4 my-6">
-                <div class="column">
-                    <p>Our unique selling point is that not only are we checking the validity of the EDI file, we are checking the integrity of the data itself.</p>
-                    <p>It doesn't matter if the EDI file is structured correctly if the data it contains doesn't make contextual sense.</p>
-                </div>
                 <div class="column is-half">
                     <img src="./images/drawings/standing_whiteboard.jpg">
                 </div>
+                <div class="column">
+                    <h3 id="validation">&#10024;Validation</h3>
+                    <p>Not only do we have the ability to verify the structure of an EDI file, we can check the integrity of the data itself.</p>
+                    <p>This includes third-party specifications, ISO standards, more contextual data such as address codes (i.e. postal codes, Amazon GLN, etc.)</p>
+                    <p>Being able to verify the integrity of a GS1 container code, or ISO VIN, can help catch data mismatch before it reaches the recipient.</p>
+                </div>
             </div>
-            <!-- Image -->
-            <img class="screenshot mt-2 mb-6" src="./images/screenshots/success.png">
-            <!-- Image & Text -->
+            <!-- Validation - Screenshot -->
+            <div class="screenshot">
+                <a href="./images/screenshots/20_04_0.png" data-lightbox="screenshot-0" data-title="Validation of DESADV file">
+                    <img src = "./images/screenshots/20_04_0.png"/>
+                </a>
+            </div>
+            <!-- Divider -->
+            <div class="is-divider mt-6"></div>
+            <!-- Conversion -->
             <div class="columns is-desktop is-vcentered px-4 my-6">
+                <div class="column is-half">
+                    <h3 id="conversion">&#10024;Conversion</h3>
+                    <p>Quickly convert your EDI files to a more accessible format, such as XML or JSON, to make data ingestion easier. This can include our cross-referenced definitions so you can easily interrogate each data point.</p>
+                    <pre class="p-0"><code class="language-shell">$ haedi ./my_baplie.edi --xml > ./my_baplie.xml</code></pre>
+                    <pre class="p-0"><code class="language-xml">&lt;LOC&gt;
+&nbsp;&nbsp;&lt;LOC01&gt;&lt;!--3227: Place/location qualifier--&gt;83&lt;!--Place of delivery (by on carriage)--&gt;&lt;/LOC01&gt;
+&nbsp;&nbsp;&lt;LOC02&gt;
+&nbsp;&nbsp; &nbsp;&lt;LOC0201&gt;&lt;!--3225: Place/location identification--&gt;AUSYD&lt;!--WHITE BAY--&gt;&lt;/LOC0201&gt;
+&nbsp;&nbsp; &nbsp;&lt;LOC0202&gt;&lt;!--1131: Code list qualifier--&gt;139&lt;!--Port--&gt;&lt;/LOC0202&gt;
+&nbsp;&nbsp; &nbsp;&lt;LOC0203&gt;&lt;!--3055: Code list responsible agency, coded--&gt;6&lt;!--UN/ECE--&gt;&lt;/LOC0203&gt;
+&nbsp;&nbsp;&lt;/LOC02&gt;
+&lt;/LOC&gt;</code></pre>
+                </div>
                 <div class="column is-half">
                     <img src="./images/drawings/walking_tablet.jpg">
                 </div>
-                <div class="column">
-                    <p>We can use our own datasets, as well as third-party or imported datasets, to cross-reference data and ensure there are no data mismatches. For example if an Amazon global location number was being used against the wrong address given, we can catch that for you.</p>
-                    <p>We also have the ability to verify a wide range of datatypes such as the GS1 serial shipping container code or ISO vehicle identity numbers.</p>
-                </div>
             </div>
-            <!-- Image -->
-            <img class="screenshot mt-2 mb-6" src="./images/screenshots/bayplan.png">
-            <!-- Image & Text -->
+            <!-- Divider -->
+            <div class="is-divider mt-6"></div>
+            <!-- Visualization -->
             <div class="columns is-desktop is-vcentered px-4 my-6">
-                <div class="column">
-                    <p>Quickly generate useful outputs and reports such as a bayplan view built from a BAPLIE message.</p>
-                    <p>The list of outputs is growing everyday as more support is implemented for many different EDI agencies.</p>
-                </div>
                 <div class="column is-half">
                     <img src="./images/drawings/standing_planet.jpg">
+                </div>
+                <div class="column">
+                    <h3 id="visualization">&#10024;Visualization</h3>
+                    <p>With such a high-level of understand of the document, this allows us to do some more creative things. For example, a bayplan view from a BAPLIE document as shown.</p>
+                    <p>The possibilities are endless and new ways to see your data are being added all the time. If you have any suggestions please contact us!</p>
+                    <p>We have future plans to include printables such as labels, integration checklists, reports, etc, to make administration more seamless.</p>
+                </div>
+            </div>
+            <!-- Visualization - Screenshot -->    
+            <div class="screenshot">
+                <a href="./images/screenshots/20_04_1.png" data-lightbox="screenshot-1" data-title="Visualization of BAPLIE file">
+                    <img src = "./images/screenshots/20_04_1.png"/>
+                </a>
+            </div>
+            <!-- Divider -->
+            <div class="is-divider mt-6"></div>
+            <!-- API -->
+            <div class="columns is-desktop is-vcentered px-4 my-6">
+                <div class="column">
+                    <h3 id="api">&#10024;API</h3>
+                    <p>There are many EDI agencies, and their specifications change all the time. By use of our API, you can query the exact data you need without being flooded with updates and the need to store terabytes of data that you only need a few kilobytes of.</p>
+                    <p>If there are any agencies that we do not have categorized, let us know and we'll do our best to get them integrated.</p>
+                    <p>haedi is a data preservation project too - we believe these communication standards shouldn't be lost to time, they should be archived.</p>
+                </div>
+                <div class="column is-half">
+                    <pre class="p-0"><code class="language-shell">$ curl 
+https://haedi.org/api/ref/edigas/cl?version=4</code></pre>
+                    <pre class="p-0"><code class="language-json">{
+&nbsp;&nbsp;"subset": "edigas",
+&nbsp;&nbsp;"datatype": "cl",
+&nbsp;&nbsp;"version": "4",
+&nbsp;&nbsp;"data": {
+&nbsp;&nbsp;&nbsp;&nbsp;"1001": {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"294": {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "Application error and acknowledgement",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"desc": "Message used by an application to acknowledge reception of a message and/or to report any errors."
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+&nbsp;&nbsp;},
+}</code></pre>
                 </div>
             </div>
             <!-- Footer -->
@@ -120,6 +189,10 @@
             </div>
         </div>
     </div>
+    <!-- Syntax highlighting -->
+    <script>hljs.highlightAll();</script>
+    <!-- Lightbox -->
+    <script src="./lib/lightbox/js/lightbox-plus-jquery.js"></script>
 </body>
 
 </html>

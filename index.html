@@ -67,15 +67,15 @@
             <!-- Contact form -->
             <div id="contact" class="field has-addons">
                 <div class="control has-icons-left is-full-width">
-                    <form name="gform" id="gform" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLScJGHtqXizArzA4BcRs5jxsdePu69UJGPyGUgk2bV5ryx0GAQ/formResponse?" target="hidden_iframe" onsubmit="document.getElementById('gform-email').value='';">
-                        <input id="gform-email" class="input" type="text" placeholder="Email" type="text" name="entry.1176030620" id="entry.1176030620"><br>
+                    <form name="contactform" id="contactform" enctype="text/plain" method="get" action="https://haedi.org/api/contact?" target="hidden_iframe">
+                        <input id="contactform-email" class="input" type="text" placeholder="Email" id="email" name="email" required><br>
                     </form>
                     <span class="icon is-left">
                         <i class="far fa-envelope"></i>
                     </span>
                 </div>
                 <div class="control">
-                    <a class="button is-link" onclick="document.getElementById('gform').submit();">
+                    <a class="button is-link" onclick="document.getElementById('contactform').submit();">
                         Get in touch!
                     </a>
                 </div>

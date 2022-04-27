@@ -60,3 +60,18 @@ a {
 .drawing {
     max-width: 50%;
 }
+
+.wide-flex {
+    display: flex; 
+    width: 100%;
+}
+
+/* Markdown */
+
+#markdown-content ul {
+    margin-top: 0;
+}
+
+#markdown-content h3 {
+    margin-top: 0;
+}

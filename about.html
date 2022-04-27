@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>haedi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/> -->
+    <link rel="shortcut icon" type="image/png" href="./images/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="./css/bulma.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/bulma-divider.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/fontawesome/css/all.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/text.css"/>
+    <!-- Sketches -->
+    <script defer src="./lib/p5.min.js"></script>
+    <script defer src="./lib/sparkle.js"></script>
+    <!-- Markdown -->
+    <script src="./lib/showdown.min.js"></script>
+</head>
+
+<!-- Scrolling -->
+<style>html{scroll-behavior:smooth}</style>
+
+<body>
+    <div class="columns is-desktop is-centered is-8-desktop is-0-mobile">
+        <div class="column is-flex is-justify-content-flex-start is-centered-on-mobile">
+            <a href="/">
+                <div class="logo">
+                    <div id="anim-logo"></div>
+                    <img class="p-2" style="height: 100%" src="./images/haedi_text.svg">
+                </div>
+            </a>        
+        </div>
+        <div class="column is-flex is-justify-content-flex-end is-centered-on-mobile buttons">
+            <button class="button">
+                <a href="https://linkedin.com/company/haedi-org">
+                    <span class="icon-text">
+                        <span class="icon"><i class="fab fa-linkedin"></i></span>
+                        <span>LinkedIn</span>
+                    </span>
+                </a>
+            </button>
+            <button class="button">
+                <a href="news.html">
+                    <span class="icon-text">
+                        <span class="icon is-small"><i style="transform: scale(0.75, 1)" class="fas fa-newspaper"></i></span>
+                        <span>News</span>
+                    </span>
+                </a>
+            </button>
+            <button class="button">
+                <a href="about.html">About</a>
+            </button>
+            <button class="button">
+                <a href="index.html#contact">Contact Us</a>
+            </button>
+        </div>
+    </div>
+    <div class="content columns is-centered">
+        <div class="column is-three-fifths">
+            <div id="markdown-content" class="wide-flex" style="flex-direction: column;"></div>
+            <!-- Footer -->
+            <div class="wide-flex mt-6" style="justify-content: center">
+                <img style="height: 32px" src="./images/machindev.svg"/>
+            </div>
+        </div>
+    </div>
+    <!-- Markdown -->
+    <script>
+        function loadFile(file_path) {
+            console.log('requesting', file_path);
+            var result = null;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", file_path, false);
+            xmlhttp.send();
+            if (xmlhttp.status==200) {
+                result = xmlhttp.responseText;
+            }
+            if (xmlhttp.status==404) {
+                // 404
+            }
+            return result;
+        }
+
+        function renderMD(file_path) {
+            var element = document.getElementById("markdown-content");
+            var contents = loadFile(file_path);
+            var converter = new showdown.Converter();
+            element.innerHTML = converter.makeHtml(contents);
+        }
+
+        renderMD("./market.md");
+    </script>
+</body>
+
+</html>

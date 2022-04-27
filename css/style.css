@@ -35,6 +35,17 @@ a {
     }
 }
 
+/* Dividers */
+
+.is-divider { /* Bulma */
+    border-top: .1rem solid #dbdbdb;
+}
+
+#markdown-content hr { /* Showdown */
+    background-color: #DBDBDB;
+    height: .1rem;
+}
+
 /* Images */
 
 .logo {
@@ -75,3 +86,4 @@ a {
 #markdown-content h3 {
     margin-top: 0;
 }
+
